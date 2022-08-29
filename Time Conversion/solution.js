@@ -30,28 +30,7 @@ function readLine() {
  */
 
 function timeConversion(s) {
-    let timeplast = s.toUpperCase().substr(-2);
-    let [hh, mm, ss] = s.slice(0, 8).split(':');
-    if (timeplast === "AM" && hh !== "12") {
-        s = hh + `:` + mm + `:` + ss
-        return s
-    }
-    if (timeplast === "AM" && hh === "12") {
-        hh = `00`
-        s = hh + `:` + mm + `:` + ss
-        return s
-    }
-    if (timeplast === "PM" && hh !== "12") {
-        hh = 12 + +hh
-        s = hh + `:` + mm + `:` + ss
-        return s
-    }
-    if (timeplast === "PM" && hh === "12") {
-        hh = "12"
-        s = hh + `:` + mm + `:` + ss
-        return s
-    }
-    return s
+    return new Date(`01.01.01, ${s.slice(0,8)} ${s.slice(-2)}`).toLocaleTimeString('ru')
 }
 
 function main() {
